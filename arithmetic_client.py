@@ -2,7 +2,17 @@
 
 import proxy
 
-ts = proxy.TupleSpaceAdapter('http://localhost:8000')
+import config
+
+config = config.read_config()
+
+ts_name      = config['name']
+adapter_host = config['adapter']['host']
+adapter_port = config['adapter']['port']
+
+adapter_uri = f'http://{adapter_host}:{adapter_port}'
+
+ts = proxy.TupleSpaceAdapter(adapter_uri)
 
 tuples = [["*", 2, 2 ], [ "+", 2, 5 ], [ "-", 9, 3 ]]
 

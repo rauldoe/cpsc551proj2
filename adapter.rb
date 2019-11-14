@@ -82,6 +82,8 @@ end
 
 server.add_handler('_in') do |tuple, sec|
   begin
+    # puts '_in called'
+    # ret = ['+', 1, 1]
     map_symbols_out(ts.take map_templates_in(tuple), sec)
   rescue Rinda::RequestExpiredError
     nil
