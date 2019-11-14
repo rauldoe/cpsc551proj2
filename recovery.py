@@ -25,6 +25,9 @@ def main(address, port):
         while True:
             data, _ = sock.recvfrom(MAX_UDP_PAYLOAD)
             notification = data.decode()
+            f = open('recovery.json', 'a+')
+            f.write(f'{notification}\r\n')
+            f.close()
             print(notification, flush=True)
     except:
         sock.close()
